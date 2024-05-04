@@ -6,7 +6,7 @@ from datetime import timedelta
 from modulocripto import calculate_moving_averages, calculate_rsi, calculate_macd
 
 # Carregar dados
-@st.cache_data
+@st.cache
 def importar_dados():
     df = pd.read_csv('dadosdf_cripto.csv')
     df['tempo'] = pd.to_datetime(df['tempo'])
