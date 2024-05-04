@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 from datetime import timedelta
 from modulocripto import calculate_moving_averages, calculate_rsi, calculate_macd
 
@@ -38,8 +37,6 @@ if escolha == 'Análise':
 
     if st.button(f'Analisar {moeda_selecionada}'):
         df_moeda = df[df['moeda'] == moeda_selecionada]
-
-        # Definindo abas específicas
         tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Correlação Geral", "Médias Móveis", "RSI", "MACD", "Volume de Negociação", "Preço de Fechamento (Últimos 20 Dias)"])
 
         with tab1:
@@ -54,19 +51,19 @@ if escolha == 'Análise':
                           labels={'value': 'Preço', 'variable': 'Indicadores'},
                           title=f'Médias Móveis para {moeda_selecionada}')
             st.plotly_chart(fig)
-        
+
         with tab3:
             df_moeda = calculate_rsi(df_moeda.copy())
             fig = px.line(df_moeda, x='tempo', y='RSI', title=f'RSI para {moeda_selecionada}')
             st.plotly_chart(fig)
-        
+
         with tab4:
             df_moeda = calculate_macd(df_moeda.copy())
             fig = px.line(df_moeda, x='tempo', y=['MACD_line', 'MACD_signal'],
                           labels={'value': 'MACD', 'variable': 'Linhas MACD'},
                           title=f'MACD para {moeda_selecionada}')
             st.plotly_chart(fig)
-        
+
         with tab5:
             volume_fig = px.bar(df_moeda, x='tempo', y='volume', title='Volume de Negociação ao Longo do Tempo')
             st.plotly_chart(volume_fig)
