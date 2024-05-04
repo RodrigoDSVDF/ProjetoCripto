@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import timedelta
-from moduloDiego import calculate_moving_averages, calculate_rsi, calculate_macd
+from modulocripto import calculate_moving_averages, calculate_rsi, calculate_macd
 
 # Carregar dados
 @st.cache_data
