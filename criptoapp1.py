@@ -5,13 +5,14 @@ from datetime import timedelta
 from modulocripto import calculate_moving_averages, calculate_rsi, calculate_macd
 
 # Carregar dados
-@st.cache
+@st.cache_data
 def importar_dados():
     df = pd.read_csv('dadosdf_cripto.csv')
     df['tempo'] = pd.to_datetime(df['tempo'])
     return df
 
 df = importar_dados()
+
 
 # Interface
 st.title('Análises de Cripto Moedas')
