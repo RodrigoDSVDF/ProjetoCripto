@@ -32,7 +32,7 @@ if escolha == 'Home':
 elif escolha == 'Visualização':
     st.subheader('Visualização de Dados')
       
-    url_da_imagem = 'post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg'
+    url_da_imagem = 'imagem.jpeg'
     st.image(url_da_imagem, use_column_width=True)
     
     criptomoedas = df['moeda'].unique()
