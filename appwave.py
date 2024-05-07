@@ -26,7 +26,7 @@ if escolha == 'Home':
     st.write("""
     Aqui você pode encontrar informações valiosas e análises detalhadas que podem ajudar a orientar suas decisões de investimento em criptomoedas.
     """)
-    st.image('https://images.unsplash.com/photo-1516245834210-c4c142787335?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', use_column_width=True)
+    st.image("post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg", use_column_width=True)
 
 elif escolha == 'Visualização':
     st.subheader('Visualização de Dados')
@@ -82,8 +82,8 @@ elif escolha == 'Análise':
             df_recente = df_moeda[df_moeda['tempo'] > (df_moeda['tempo'].max() - timedelta(days=30))]  # Mudado de 20 para 30 dias
             close_fig = px.line(df_recente, x='tempo', y='fechamento', title='Preço de Fechamento dos Últimos 30 Dias')
             st.plotly_chart(close_fig)
-
-
+        
+        
         with tab7:
     # Adicionar análise de volatilidade percentual
           st.subheader('Volatilidade Percentual')
