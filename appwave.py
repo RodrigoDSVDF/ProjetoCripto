@@ -38,9 +38,6 @@ elif escolha == 'Visualização':
     criptomoedas = df['moeda'].unique()
     moeda_selecionada = st.selectbox('Selecione uma Moeda para Visualização:', criptomoedas)
    
-    url_da_imagem = 'post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg'
-    st.image(url_da_imagem, use_column_width=True)
-    
     st.write("")  # Separador opcional para melhor layout
 
     if st.button(f'Visualizar Gráfico para {moeda_selecionada}'):
