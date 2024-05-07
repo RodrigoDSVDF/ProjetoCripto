@@ -26,13 +26,21 @@ if escolha == 'Home':
     st.write("""
     Aqui você pode encontrar informações valiosas e análises detalhadas que podem ajudar a orientar suas decisões de investimento em criptomoedas.
     """)
-    st.image("post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg", use_column_width=True)
+    url_da_imagem = 'https://images.unsplash.com/photo-1516245834210-c4c142787335?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    st.image(url_da_imagem, use_column_width=True)
 
 elif escolha == 'Visualização':
     st.subheader('Visualização de Dados')
+      
+    url_da_imagem = 'post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg'
+    st.image(url_da_imagem, use_column_width=True)
+    
     criptomoedas = df['moeda'].unique()
     moeda_selecionada = st.selectbox('Selecione uma Moeda para Visualização:', criptomoedas)
-    st.image(r"C:\Users\Rodrigo_df\Downloads\post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg", use_column_width=True)
+   
+    url_da_imagem = 'post_thumbnail-55a60f34beddda4324a2e11c4503b6f8.jpeg'
+    st.image(url_da_imagem, use_column_width=True)
+    
     st.write("")  # Separador opcional para melhor layout
 
     if st.button(f'Visualizar Gráfico para {moeda_selecionada}'):
@@ -83,22 +91,18 @@ elif escolha == 'Análise':
             close_fig = px.line(df_recente, x='tempo', y='fechamento', title='Preço de Fechamento dos Últimos 30 Dias')
             st.plotly_chart(close_fig)
         
-        
         with tab7:
-    # Adicionar análise de volatilidade percentual
-          st.subheader('Volatilidade Percentual')
+            st.subheader('Volatilidade Percentual')
 
-    # Calcular a volatilidade percentual para todas as moedas
-    volatilidade = []
-    for moeda in criptomoedas:
-        df_moeda = df[df['moeda'] == moeda]
-        volatilidade.append((moeda, (df_moeda['fechamento'].max() - df_moeda['fechamento'].min()) / df_moeda['fechamento'].min() * 100))
+            # Calcular a volatilidade percentual para todas as moedas
+            volatilidade = []
+            for moeda in criptomoedas:
+                df_moeda = df[df['moeda'] == moeda]
+                volatilidade.append((moeda, (df_moeda['fechamento'].max() - df_moeda['fechamento'].min()) / df_moeda['fechamento'].min() * 100))
 
-    # Criar DataFrame com os resultados
-    df_volatilidade = pd.DataFrame(volatilidade, columns=['Moeda', 'Volatilidade Percentual'])
+            # Criar DataFrame com os resultados
+            df_volatilidade = pd.DataFrame(volatilidade, columns=['Moeda', 'Volatilidade Percentual'])
 
-    # Criar gráfico de barras
-    fig = px.bar(df_volatilidade, x='Moeda', y='Volatilidade Percentual', title='Volatilidade Percentual para Todas as Moedas')
-    st.plotly_chart(fig)
-
-# Inserir qualquer conteúdo adicional para a opção 'Sobre' se necessário
+            # Criar gráfico de barras
+            fig = px.bar(df_volatilidade, x='Moeda', y='Volatilidade Percentual', title='Volatilidade Percentual para Todas as Moedas')
+            st.plotly_chart(fig)
