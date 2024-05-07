@@ -52,7 +52,13 @@ elif escolha == 'Análise':
 
     if st.button(f'Analisar {moeda_selecionada}'):
         df_moeda = df[df['moeda'] == moeda_selecionada]
-        tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Correlação Geral", "Médias Móveis", "RSI", "MACD", "Volume de Negociação", "Preço de Fechamento (Últimos 30 Dias)", "Volatilidade Percentual"])
+        tab_labels = [
+    "Correlação Geral", "Médias Móveis", "RSI", "MACD", 
+    "Volume de Negociação", "Preço de Fechamento (Últimos 30 Dias)", 
+    "Volatilidade Percentual"
+]
+
+        tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(tab_labels)
 
         with tab1:
             fig = px.scatter(df_moeda, x='volume', y='fechamento', trendline="ols",
