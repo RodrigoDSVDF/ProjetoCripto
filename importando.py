@@ -46,4 +46,4 @@ def atualizar_dados():
 # Executar a função de atualização a cada 10 minutos
 while True:
     atualizar_dados()
-    time.sleep(64000)  # Pausa o script por 10 minutos (600 segundos)
+    time.sleep(10)  # Pausa o script por 10 minutos (600 segundos)
